@@ -9,7 +9,7 @@ import platform.posix.getenv
 
 fun main() {
     val aliases = Aliases()
-    val homeDir = getenv("HOME")?.toKString()
+    val homeDir = getenv("HOME")?.toKString() ?: "~"
     val file = fopen("$homeDir/.alias", "r")
     try {
         memScoped {
@@ -24,7 +24,12 @@ fun main() {
     } finally {
         fclose(file)
     }
+    val maxNameLength = aliases.list().maxBy { it.name.length }.name.length
+
     aliases.list().forEach {
-        println("${it.name}=${it.filepath}")
+        val dots = maxNameLength - it.name.length + 3
+        print(it.name)
+        (1..dots).forEach { _ -> print(".") }
+        println(it.filepath.replace(homeDir, "~"))
     }
 }
