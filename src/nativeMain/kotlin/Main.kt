@@ -8,7 +8,7 @@ import platform.posix.fopen
 
 fun main() {
     val aliases = Aliases()
-    val file = fopen("/Users/tcrone/.alias", "r" )
+    val file = fopen("/Users/tcrone/.alias", "r")
     try {
         memScoped {
             val readBufferLength = 64 * 1024

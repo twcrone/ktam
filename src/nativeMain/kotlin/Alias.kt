@@ -4,7 +4,7 @@ open class Alias(val name: String, val filepath: String) {
     companion object {
         fun from(line: String): Alias {
             val tokens = line.replace("\n", "").split("=")
-            if(tokens.size == 1) {
+            if (tokens.size == 1) {
                 return NoAlias
             }
             val first = tokens[0].substring(6)
