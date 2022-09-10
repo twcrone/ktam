@@ -5,10 +5,12 @@ import kotlinx.cinterop.toKString
 import platform.posix.fclose
 import platform.posix.fgets
 import platform.posix.fopen
+import platform.posix.getenv
 
 fun main() {
     val aliases = Aliases()
-    val file = fopen("/Users/tcrone/.alias", "r")
+    val homeDir = getenv("HOME")?.toKString()
+    val file = fopen("$homeDir/.alias", "r")
     try {
         memScoped {
             val readBufferLength = 64 * 1024
