@@ -1,7 +1,5 @@
 import kotlin.test.Test
 import kotlin.test.assertEquals
-import kotlin.test.assertNotNull
-import kotlin.test.assertTrue
 
 class AliasesTest {
 
@@ -14,5 +12,15 @@ class AliasesTest {
         val alias = aliases.list().first()
         assertEquals("name", alias.name)
         assertEquals("/path/to/file.txt", alias.filepath)
+    }
+
+    @Test
+    fun removeAliasByName() {
+        val aliases = Aliases()
+        aliases.add("alias name=/path/to/file.txt")
+        aliases.add("alias key=something/else")
+        assertEquals(2, aliases.size())
+        aliases.remove("name")
+        assertEquals(1, aliases.size())
     }
 }

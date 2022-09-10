@@ -14,17 +14,4 @@ open class Alias(val name: String, val filepath: String) {
     }
 }
 
-class Aliases {
-    private val map = mutableMapOf<String, Alias>()
-
-    fun add(line: String) {
-        val alias = Alias.from(line)
-        map[alias.name] = alias
-    }
-
-    fun size() = map.size
-
-    fun list() = map.values.toList().sortedBy { it.name }
-}
-
 object NoAlias : Alias("", "")
