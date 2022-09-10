@@ -12,11 +12,11 @@ class Aliases {
 
     fun size() = map.size
 
-    fun list() = map.values.toList()
+    fun list() = map.values.toList().sortedBy { it.name }
 }
 
 fun aliasFrom(line: String): Alias {
-    val tokens = line.split("=")
+    val tokens = line.replace("\n", "").split("=")
     if(tokens.size == 1) {
         return NoAlias
     }

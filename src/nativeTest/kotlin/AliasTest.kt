@@ -6,7 +6,7 @@ class AliasTest {
 
     @Test
     fun parseAlias() {
-        val line = "alias name=/path/to/file.txt"
+        val line = "alias name=/path/to/file.txt\n"
         val alias = aliasFrom(line)
 
         assertNotNull(alias)
