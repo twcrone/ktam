@@ -5,12 +5,19 @@ fun main(args: Array<String>) {
     val homeDir = getenv("HOME")?.toKString() ?: "~"
     val workingDir = getenv("PWD")?.toKString() ?: "."
     val cli = AliasCli()
-    val aliases = Aliases.from("$workingDir/.alias")
+    val aliases = Aliases.from("$homeDir/.alias")
+
     if(args.isNotEmpty()) {
-        aliases.writeTo("$workingDir/.alias.bak")
+        aliases.writeTo("$homeDir/.alias.bak")
         val name = args.first()
-        aliases.add(name, "'$workingDir'")
-        aliases.writeTo("$workingDir/.alias")
+        if(args.size > 1 && args[1] == "d") {
+            cli.printDeleteHeading(name)
+            aliases.remove(name)
+        } else {
+            cli.printAddHeading(name)
+            aliases.add(name, "'$workingDir'")
+        }
+        aliases.writeTo("$homeDir/.alias")
     }
 
     cli.printAliases(homeDir, aliases)
