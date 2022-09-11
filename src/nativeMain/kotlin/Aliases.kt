@@ -5,12 +5,18 @@ import kotlinx.cinterop.toKString
 import platform.posix.fclose
 import platform.posix.fgets
 import platform.posix.fopen
+import platform.posix.fputs
 
 class Aliases {
     private val map = mutableMapOf<String, Alias>()
 
     fun add(line: String) {
         val alias = Alias.from(line)
+        map[alias.name] = alias
+    }
+
+    fun add(name: String, filepath: String) {
+        val alias = Alias(name, filepath)
         map[alias.name] = alias
     }
 
@@ -21,6 +27,20 @@ class Aliases {
     fun size() = map.size
 
     fun list() = map.values.toList().sortedBy { it.name }
+
+    fun writeTo(filename: String) {
+        val file = fopen(filename, "w") ?:
+            throw IllegalArgumentException("Cannot open file $filename for output")
+        try {
+            memScoped {
+              list().forEach {
+                  fputs(it.toString(), file)
+              }
+            }
+        } finally {
+            fclose(file)
+        }
+    }
 
     companion object {
         fun from(filename: String): Aliases {

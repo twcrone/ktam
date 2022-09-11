@@ -5,5 +5,11 @@ fun main(args: Array<String>) {
     val homeDir = getenv("HOME")?.toKString() ?: "~"
     val cli = AliasCli()
     val aliases = Aliases.from("$homeDir/.alias")
+
+    if(args.isNotEmpty()) {
+        val name = args.first()
+        aliases.add(name, "directory")
+    }
+
     cli.printAliases(homeDir, aliases)
 }
