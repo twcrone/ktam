@@ -2,7 +2,7 @@ plugins {
     kotlin("multiplatform") version "1.7.10"
 }
 
-group = "me.tcrone"
+group = "ktodd"
 version = "1.0-SNAPSHOT"
 
 repositories {
