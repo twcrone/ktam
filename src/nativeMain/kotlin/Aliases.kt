@@ -12,7 +12,11 @@ class Aliases {
 
     fun add(line: String) {
         val alias = Alias.from(line)
-        map[alias.name] = alias
+        if(alias == NoAlias) {
+            println("No alias")
+        } else {
+            map[alias.name] = alias
+        }
     }
 
     fun add(name: String, filepath: String) {

@@ -3,14 +3,14 @@ import platform.posix.getenv
 
 fun main(args: Array<String>) {
     val homeDir = getenv("HOME")?.toKString() ?: "~"
+    val workingDir = getenv("PWD")?.toKString() ?: "."
     val cli = AliasCli()
-    val aliases = Aliases.from("$homeDir/.alias")
-
+    val aliases = Aliases.from("$workingDir/.alias")
     if(args.isNotEmpty()) {
+        aliases.writeTo("$workingDir/.alias.bak")
         val name = args.first()
-        val workingDir = getenv("PWD")?.toKString() ?: "."
         aliases.add(name, "'$workingDir'")
-        aliases.writeTo("$workingDir/aliases.txt")
+        aliases.writeTo("$workingDir/.alias")
     }
 
     cli.printAliases(homeDir, aliases)
