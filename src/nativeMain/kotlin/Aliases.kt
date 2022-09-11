@@ -35,6 +35,7 @@ class Aliases {
             memScoped {
               list().forEach {
                   fputs(it.toString(), file)
+                  fputs("\n", file)
               }
             }
         } finally {
