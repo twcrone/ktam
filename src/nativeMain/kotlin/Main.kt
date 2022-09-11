@@ -25,6 +25,7 @@ fun main() {
         fclose(file)
     }
 
+    // https://en.wikipedia.org/wiki/ANSI_escape_code#Colors
     val brightBlue = "\u001b[94m"
     val blue = "\u001b[34m"
     val cyan = "\u001b[36m"
