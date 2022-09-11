@@ -5,7 +5,6 @@ import kotlinx.cinterop.toKString
 import platform.posix.fclose
 import platform.posix.fgets
 import platform.posix.fopen
-import platform.posix.getenv
 
 class Aliases {
     private val map = mutableMapOf<String, Alias>()

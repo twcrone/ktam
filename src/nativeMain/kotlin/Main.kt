@@ -1,10 +1,4 @@
-import kotlinx.cinterop.ByteVar
-import kotlinx.cinterop.allocArray
-import kotlinx.cinterop.memScoped
 import kotlinx.cinterop.toKString
-import platform.posix.fclose
-import platform.posix.fgets
-import platform.posix.fopen
 import platform.posix.getenv
 
 fun main() {
