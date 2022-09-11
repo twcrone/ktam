@@ -25,10 +25,11 @@ Moves the release executable built in former step to ~/bin/am
 
 `am <alias-name>`
 
-e.g. `alsmgr bob` when present working directory is `/Users/bob/work`
-will result in `alias bob='/Users/bob/work'` being added to `.alias`
-file in $HOME directory that can be sourced with ZSH for directory
-aliases.
+e.g. `alsmgr bob` when present working directory is `/Users/bob/work` will result in 
+
+`alias bob='/Users/bob/work'` 
+
+being added to `.alias` file in $HOME directory that can be sourced with ZSH for directory aliases.
 
 
 ### Delete an alias
