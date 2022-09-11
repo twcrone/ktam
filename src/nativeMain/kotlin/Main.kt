@@ -8,7 +8,8 @@ fun main(args: Array<String>) {
 
     if(args.isNotEmpty()) {
         val name = args.first()
-        aliases.add(name, "directory")
+        val workingDir = getenv("PWD")?.toKString() ?: "."
+        aliases.add(name, "'$workingDir'")
     }
 
     cli.printAliases(homeDir, aliases)
