@@ -4,6 +4,12 @@ Alias Manager
 Simple command line utility for maintaining an alias file (`~/.alias`) that can
 be sourced for directory aliases for jumping around file system easily.
 
+This version was built with Kotlin Native and builds a `.kexe` runnable on the target platform.
+
+### Run Tests
+
+`./test.sh`
+
 ### Build and Run
 
 `./run.sh`
